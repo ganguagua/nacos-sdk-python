@@ -851,7 +851,7 @@ class NacosClient:
         headers.update({"User-Agent": "Nacos-Python-Client:v" + VERSION})
 
     def _inject_auth_info(self, headers, params, data, module="config"):
-        if self.username and self.password and params:
+        if self.username and self.password and params is not None:
             params.update({"username": self.username, "password": self.password})
         if not self.auth_enabled:
             return
